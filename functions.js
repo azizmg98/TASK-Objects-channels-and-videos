@@ -15,6 +15,8 @@ const channels = require("./channels.json");
  ****************************************************************/
 function getChannelName(channel) {
   // Your code here
+ return channel.channels
+  // return channels.map(cName => cName.name)
 }
 
 // console.log(getChannelName(channels[0]));
@@ -26,6 +28,8 @@ function getChannelName(channel) {
  ****************************************************************/
 function numberOfVideos(channel) {
   // Your code here
+  let number = 0 //increment for each video in channel
+  channels.forEach(video => video.videos.map(videoNumber => (videoNumber = number ++)))
 }
 // console.log(numberOfVideos(channels[0]))
 
@@ -40,6 +44,7 @@ function numberOfVideos(channel) {
  ****************************************************************/
 function channelHasVideo(videoTitle, channel) {
   // Your code here
+  // use .toLower()
 }
 // console.log(channelHasVideo("The Universal S", channels[0]));
 // console.log(channelHasVideo("The Universal S", channels[1]));
@@ -54,6 +59,7 @@ function channelHasVideo(videoTitle, channel) {
  ****************************************************************/
 function getChannelByName(channelName, channels) {
   // Your code here
+  // use .toLower()
 }
 // console.log(getChannelByName("PowerfulJRE", channels))
 
@@ -67,6 +73,7 @@ function getChannelByName(channelName, channels) {
  ****************************************************************/
 function getChannelByVideoTitle(videoTitle, channels) {
   // Your code here
+  // also also use .toLower()
 }
 // console.log(getChannelByVideoTitle("The Universal S", channels));
 
@@ -80,6 +87,7 @@ function getChannelByVideoTitle(videoTitle, channels) {
  ****************************************************************/
 function searchChannels(query, channels) {
   // Your code here
+  // also^3 use to .toLower()
 }
 // console.log(searchChannels("the", channels))
 

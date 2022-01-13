@@ -15,7 +15,7 @@ const channels = require("./channels.json");
  ****************************************************************/
 function getChannelName(channel) {
   // Your code here
- return channel.channels
+ return channel.name;
   // return channels.map(cName => cName.name)
 }
 
@@ -28,8 +28,9 @@ function getChannelName(channel) {
  ****************************************************************/
 function numberOfVideos(channel) {
   // Your code here
-  let number = 0 //increment for each video in channel
-  channels.forEach(video => video.videos.map(videoNumber => (videoNumber = number ++)))
+  // let number = 0 //increment for each video in channel
+  // channels.forEach(video => video.videos.map(videoNumber => (videoNumber = number ++)))
+  return channel.videos.length
 }
 // console.log(numberOfVideos(channels[0]))
 
@@ -45,6 +46,7 @@ function numberOfVideos(channel) {
 function channelHasVideo(videoTitle, channel) {
   // Your code here
   // use .toLower()
+ return channel.videos.some(video => video.title.toLowerCase() === videoTitle.toLowerCase());
 }
 // console.log(channelHasVideo("The Universal S", channels[0]));
 // console.log(channelHasVideo("The Universal S", channels[1]));
@@ -60,6 +62,7 @@ function channelHasVideo(videoTitle, channel) {
 function getChannelByName(channelName, channels) {
   // Your code here
   // use .toLower()
+  return  channels.find(channel => channel.name.toLowerCase() === channelName.toLowerCase())
 }
 // console.log(getChannelByName("PowerfulJRE", channels))
 
@@ -74,6 +77,12 @@ function getChannelByName(channelName, channels) {
 function getChannelByVideoTitle(videoTitle, channels) {
   // Your code here
   // also also use .toLower()
+  return channels.find((channel) =>
+   channel.videos.some((video) =>
+    video.title.toLowerCase() === videoTitle.toLowerCase()))
+  // solution copied from video
+  // QUESTION how do the parameters inside the arrow functions know to look for channel name or video name
+  // ANSWER the iterator method is executed on the channels array and videos array respectivly
 }
 // console.log(getChannelByVideoTitle("The Universal S", channels));
 
@@ -88,8 +97,11 @@ function getChannelByVideoTitle(videoTitle, channels) {
 function searchChannels(query, channels) {
   // Your code here
   // also^3 use to .toLower()
+  return channels.filter(channel =>
+   channel.description.toLowerCase().includes(query.toLowerCase()) 
+   || channel.name.toLowerCase().includes(query.toLowerCase()))
 }
-// console.log(searchChannels("the", channels))
+console.log(searchChannels("the", channels))
 
 module.exports = {
   getChannelName,
